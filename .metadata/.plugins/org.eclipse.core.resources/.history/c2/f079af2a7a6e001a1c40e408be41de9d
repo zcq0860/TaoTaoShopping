@@ -1,0 +1,14 @@
+package com.taotao.service.impl;
+
+import com.taotao.common.pojo.EUDataGridResult;
+import com.taotao.service.ContentService;
+
+public class ContentServiceImpl implements ContentService {
+
+	@Override
+	public EUDataGridResult queryContentlist(Long categoryId, int page, int rows) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

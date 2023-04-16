@@ -1,0 +1,170 @@
+package com.taotao.service.impl;
+
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.taotao.common.pojo.EUDataGridResult;
+import com.taotao.common.utils.IDUtils;
+import com.taotao.common.utils.TaotaoResult;
+import com.taotao.mapper.TbItemCatMapper;
+import com.taotao.mapper.TbItemDescMapper;
+import com.taotao.mapper.TbItemMapper;
+import com.taotao.mapper.TbItemParamItemMapper;
+import com.taotao.mapper.TbItemParamMapper;
+import com.taotao.pojo.TbItem;
+import com.taotao.pojo.TbItemCat;
+import com.taotao.pojo.TbItemDesc;
+import com.taotao.pojo.TbItemExample;
+import com.taotao.pojo.TbItemExample.Criteria;
+import com.taotao.pojo.TbItemParam;
+import com.taotao.pojo.TbItemParamExample;
+import com.taotao.service.ItemService;
+
+/**
+ * 商品管理
+ * 
+ * @author Administrator
+ *
+ */
+@Service
+public class ItemServiceImpl implements ItemService {
+
+	@Autowired
+	private TbItemMapper itemMapper;
+	@Autowired
+	private TbItemDescMapper itemDescMapper;
+	@Autowired
+	private TbItemCatMapper itemCatMapper;
+	
+	@Override
+	public TbItem getItemById(long itemId) {
+		// TODO Auto-generated method stub
+//		TbItem item = itemMapper.selectByPrimaryKey(itemId);
+		
+		TbItemExample example = new TbItemExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andIdEqualTo(itemId);
+		List<TbItem> list = itemMapper.selectByExample(example);
+		if (list != null && list.size() > 0) {
+			TbItem item = list.get(0);
+			return item;
+		}
+		return null;
+	}
+
+	/**
+	 * 商品列表查询
+	 */
+	@Override
+	public EUDataGridResult getItemList(int page, int rows) {
+		// 查询商品列表
+		TbItemExample example = new TbItemExample();
+		// 分页处理
+		PageHelper.startPage(page, rows);
+		List<TbItem> list = itemMapper.selectByExample(example);
+		// 创建一个返回值对象
+		EUDataGridResult result = new EUDataGridResult();
+		result.setRows(list);
+		// 取记录总条数
+		PageInfo<TbItem> pageInfo = new PageInfo<>(list);
+		result.setTotal(pageInfo.getTotal());
+		return result;
+	}
+
+	/**
+	 * 创建商品信息
+	 * 
+	 * @throws Exception
+	 */
+	@Override
+	public TaotaoResult createItem(TbItem item, String desc) throws Exception {
+		// item补全
+		// 生成商品ID
+		Long itemId = IDUtils.genItemId();
+		item.setId(itemId);
+		// 商品的状态
+		item.setStatus((byte) 1);
+		item.setCreated(new Date());
+		item.setUpdated(new Date());
+		// 插入到数据库
+		itemMapper.insert(item);
+		// 添加商品描述信息
+		TaotaoResult result = insertItemDesc(itemId, desc);
+		if (result.getStatus() != 200) {
+			throw new Exception();
+		}
+		return TaotaoResult.ok();
+	}
+
+	/**
+	 * 根据id，更新商品状态1-正常，2-下架，3-删除
+	 */
+	@Override
+	public TaotaoResult updateItemStatus(List<Long> ids, String method) {
+		TbItem item = new TbItem();
+		if (method.equals("reshelf")) {
+			// 正常，更新status=1即可
+			item.setStatus((byte) 1);
+			item.setUpdated(new Date());
+		} else if (method.equals("instock")) {
+			// 下架，更新status=2即可
+			item.setStatus((byte) 2);
+			item.setUpdated(new Date());
+		} else if (method.equals("delete")) {
+			// 删除，更新status=3即可
+			item.setStatus((byte) 3);
+			item.setUpdated(new Date());
+		}
+		
+		for (Long id : ids) {
+			// 创建查询条件，根据id更新
+			TbItemExample tbItemExample = new TbItemExample();
+			Criteria criteria = tbItemExample.createCriteria();
+			criteria.andIdEqualTo(id);
+			// 第一个参数 是要修改的部分值组成的对象，其中有些属性为null则表示该项不修改。
+			// 第二个参数 是一个对应的查询条件的类， 通过这个类可以实现 order by 和一部分的where 条件。
+			itemMapper.updateByExampleSelective(item, tbItemExample);
+		}
+		return TaotaoResult.ok();
+	}
+	
+	/**
+	 * 创建商品描述
+	 */
+	public TaotaoResult insertItemDesc(Long itemId, String desc) {
+		TbItemDesc itemDesc = new TbItemDesc();
+		itemDesc.setItemId(itemId);
+		itemDesc.setItemDesc(desc);
+		itemDesc.setCreated(new Date());
+		itemDesc.setUpdated(new Date());
+		itemDescMapper.insert(itemDesc);
+		return TaotaoResult.ok();
+	}
+
+	//更新商品信息
+	@Override
+	public TaotaoResult updateItem(TbItem item) {
+		item.setUpdated(new Date());
+		itemMapper.updateByPrimaryKeySelective(item);
+
+		return TaotaoResult.ok();
+	}
+	
+	@Override
+	public TbItemCat getItemCatByCid(Long cid) {
+		TbItemCat itemCat = itemCatMapper.selectByPrimaryKey(cid);
+		return itemCat;
+	}
+	@Override
+	public TbItemDesc getItemDescById(Long id) {
+		TbItemDesc itemDesc = itemDescMapper.selectByPrimaryKey(id);
+		return itemDesc;
+	}
+
+}

@@ -1,0 +1,13 @@
+package com.taotao.portal.service.impl;
+
+import com.taotao.portal.service.ContentService;
+
+public class ContentServiceImpl implements ContentService {
+
+	@Override
+	public String getContentList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

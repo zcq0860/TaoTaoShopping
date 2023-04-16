@@ -1,0 +1,10 @@
+package com.taotao.service;
+
+import com.github.pagehelper.PageHelper;
+import com.taotao.common.pojo.EUDataGridResult;
+
+public interface ContentService {
+	
+	//内容列表展示
+	EUDataGridResult queryContentlist(Long categoryId, int page, int rows);
+}

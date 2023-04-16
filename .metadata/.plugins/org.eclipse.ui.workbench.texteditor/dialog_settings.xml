@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<item key="selection" value="URL_Serv"/>
+		<list key="findhistory">
+			<item value="CloseableHttpClient"/>
+			<item value="URL_Serv"/>
+			<item value="category"/>
+			<item value="getDataService"/>
+			<item value="_thisInput.val()"/>
+			<item value="getCartItemList"/>
+			<item value="+"/>
+			<item value="192.168.25.154"/>
+			<item value="taotao-manager"/>
+		</list>
+		<list key="replacehistory">
+			<item value="192.168.15.141"/>
+			<item value="taotao-order"/>
+			<item value="taotao-manager"/>
+			<item value="com.taotao.order.dao"/>
+			<item value="cn.bdu."/>
+			<item value=" &lt;br/&gt;"/>
+			<item value="s_ch06_2"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="360"/>
+		<item key="DIALOG_Y_ORIGIN" value="143"/>
+		<item key="DIALOG_WIDTH" value="300"/>
+		<item key="DIALOG_HEIGHT" value="409"/>
+		<item key="DIALOG_FONT_NAME" value="1|微软雅黑|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|微软雅黑"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="452"/>
+		<item key="DIALOG_Y_ORIGIN" value="234"/>
+	</section>
+</section>

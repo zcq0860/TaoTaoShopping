@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.taotao.sso.dao.impl&apos; to &apos;com.taotao.sso.dao&apos;&#x0D;&#x0A;- Original project: &apos;taotao-sso&apos;&#x0D;&#x0A;- Original element: &apos;taotao-sso/src/main/java/com.taotao.sso.dao.impl&apos;&#x0D;&#x0A;- Renamed element: &apos;taotao-sso/src/main/java/com.taotao.sso.dao&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings&#x0D;&#x0A;- Rename subpackages of the package" description="Rename package &apos;com.taotao.sso.dao.impl&apos;" flags="589830" hierarchical="true" id="org.eclipse.jdt.ui.rename.package" input="/src\/main\/java&lt;com.taotao.sso.dao.impl" name="com.taotao.sso.dao" qualified="false" references="true" stamp="1587895885892" textual="false" version="1.0"/>
+</session>

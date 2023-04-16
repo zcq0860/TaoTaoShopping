@@ -1,0 +1,40 @@
+package com.taotao.service.impl;
+
+import java.util.List;
+
+import javax.naming.spi.ResolveResult;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.taotao.common.pojo.EUDataGridResult;
+import com.taotao.mapper.TbContentMapper;
+import com.taotao.pojo.TbContent;
+import com.taotao.pojo.TbContentExample;
+import com.taotao.service.ContentService;
+
+public class ContentServiceImpl implements ContentService {
+
+	@Autowired
+	private TbContentMapper contentMapper; 
+	
+	@Override
+	public EUDataGridResult queryContentlist(Long categoryId, int page, int rows) {
+
+		//使用插件处理分页
+		PageHelper.startPage(page, rows);
+		//查询categoryId相匹配的所有TbContent
+		TbContentExample example = new TbContentExample();
+		TbContentExample.Criteria criteria = example.createCriteria();
+		criteria.andCategoryIdEqualTo(categoryId);
+		List<TbContent> list = contentMapper.selectByExampleWithBLOBs(example);
+		//获取共有多少页
+		PageInfo<TbContent> pageInfo = new PageInfo<>(list);
+		//创建EUDateGridResult结果集
+		EUDataGridResult result = new EUDataGridResult();
+		result.setRows(list);
+		result.setTotal(pageInfo.getTotal());
+		return result; 
+	}
+}

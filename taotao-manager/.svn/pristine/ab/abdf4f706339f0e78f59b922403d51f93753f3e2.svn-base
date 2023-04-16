@@ -1,0 +1,101 @@
+package com.taotao.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.taotao.common.pojo.EUDataGridResult;
+import com.taotao.common.utils.TaotaoResult;
+import com.taotao.pojo.TbItem;
+import com.taotao.pojo.TbItemCat;
+import com.taotao.pojo.TbItemDesc;
+import com.taotao.pojo.TbItemParam;
+import com.taotao.service.ItemService;
+import com.taotao.service.ItemParamService;
+import com.taotao.service.impl.ItemServiceImpl;
+import com.taotao.service.impl.ItemParamServiceImpl;
+
+@Controller
+public class ItemController {
+
+	@Autowired
+	private ItemService itemService;
+	@Autowired
+	private ItemParamService itemParamService;
+	
+	//显示商品信息
+	@RequestMapping("/item/{itemId}")
+	@ResponseBody
+	public TbItem getItemById(@PathVariable Long itemId) {
+		TbItem tbItem = itemService.getItemById(itemId);
+		return tbItem;
+	}
+	@RequestMapping("/item/cat/class")
+	@ResponseBody
+	public TaotaoResult getCatNameByCid(@RequestParam(value = "cid",defaultValue = "0") Long cid) {
+		TbItemCat tbItemCat = itemService.getItemCatByCid(cid);
+		return TaotaoResult.ok(tbItemCat);
+	}
+	
+	
+	@RequestMapping("/item/list")
+	@ResponseBody
+	public EUDataGridResult getItemList(Integer page, Integer rows) {
+		EUDataGridResult result = itemService.getItemList(page, rows);
+		return result;
+	}
+	//显示商品规格信息
+	@RequestMapping("/item/param/{itemParamId}")
+	@ResponseBody
+	public TbItemParam getItemParamById(@PathVariable Long itemParamId) {
+		TbItemParam tbParamItem = itemParamService.getItemParamById(itemParamId);
+		return tbParamItem;
+	}
+	@RequestMapping("/item/param/list")
+	@ResponseBody
+	public EUDataGridResult getItemParamList(Integer page, Integer rows) {
+		EUDataGridResult result = itemParamService.getItemParamList(page, rows);
+		return result;
+	}
+	
+	/**
+	 * 修改商品信息
+	 */
+	@RequestMapping(value="/rest/item/update",method=RequestMethod.POST)
+	@ResponseBody
+	public TaotaoResult updateItem(TbItem item) {
+		TaotaoResult result = itemService.updateItem(item);
+		return result;
+	}
+	
+	/**
+	 * 更新商品状态
+	 */
+	@RequestMapping("/rest/item/{method}")
+	@ResponseBody
+	public TaotaoResult updateItemStatus(@RequestParam(value = "ids") List<Long> ids, @PathVariable String method) {
+		TaotaoResult result = itemService.updateItemStatus(ids, method);
+		return result;
+	}
+	@RequestMapping("/rest/item/query/item/desc/{id}")
+	@ResponseBody
+	public TaotaoResult getDesc(@PathVariable long id) {
+		return TaotaoResult.ok(itemService.getItemDescById(id));
+	}
+
+	/**
+	 * 保存商品信息
+	 */
+	@RequestMapping(value = "/item/save", method = RequestMethod.POST)
+	@ResponseBody
+	private TaotaoResult createItem(TbItem item, String desc) throws Exception {
+		TaotaoResult result = itemService.createItem(item, desc);
+		return result;
+	}
+}

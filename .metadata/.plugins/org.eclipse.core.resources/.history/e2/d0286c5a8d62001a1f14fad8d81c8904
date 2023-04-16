@@ -1,0 +1,10 @@
+#FTP相关配置
+#FTP的ip地址
+FTP_ADDRESS=192.168.15.132
+FTP_PORT=21
+FTP_USERNAME=ftpuser
+FTP_PASSWORD=123456
+FTP_BASE_PATH=/home/ftpuser/www/images
+#图片服务器的相关配置
+#服务器的基础路径
+IMAGE_BASE_URL=http://192.168.15.132/images/

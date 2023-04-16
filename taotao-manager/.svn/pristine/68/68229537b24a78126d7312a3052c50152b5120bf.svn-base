@@ -1,0 +1,32 @@
+package com.taotao.service;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.taotao.common.pojo.EUDataGridResult;
+import com.taotao.common.utils.TaotaoResult;
+import com.taotao.pojo.TbItem;
+import com.taotao.pojo.TbItemCat;
+import com.taotao.pojo.TbItemDesc;
+
+public interface ItemService {
+
+	TbItem getItemById(long itemId);
+	//展示商品列表
+	EUDataGridResult getItemList(int page, int rows);
+	
+	TaotaoResult createItem(TbItem item, String desc) throws Exception;
+
+	/**
+	 * 更新商品
+	 */
+	TaotaoResult updateItem(TbItem item);
+	TbItemCat getItemCatByCid(Long cid);
+	TbItemDesc getItemDescById(Long id);
+	
+	/**
+	 * 更新商品状态
+	 */
+	TaotaoResult updateItemStatus(List<Long> ids, String method);
+}

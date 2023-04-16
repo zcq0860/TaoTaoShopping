@@ -1,0 +1,14 @@
+1559557652117	Rename compilation unit 'AutoLogin.java'
+1559559696609	Delete element
+1559559833678	Delete element
+1559657685119	Rename package 'cn.itcast.bookStore.dao'
+1559657701116	Rename package 'cn.itcast.bookStore.domain'
+1559657714141	Rename package 'cn.itcast.bookStore.exception'
+1559657730769	Rename package 'cn.itcast.bookStore.service'
+1559657739833	Rename package 'cn.itcast.bookStore.tag'
+1559657752935	Rename package 'cn.itcast.bookStore.utils'
+1559657766077	Rename package 'cn.itcast.bookStore.web.filter'
+1559657774033	Rename package 'cn.itcast.bookStore.web.listener'
+1559657781968	Rename package 'cn.itcast.bookStore.web.servlet.client'
+1559657791679	Rename package 'cn.itcast.bookStore.web.servlet.manager'
+1559658476346	Delete element

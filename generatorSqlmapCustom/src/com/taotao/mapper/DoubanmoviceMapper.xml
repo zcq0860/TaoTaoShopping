@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.taotao.mapper.DoubanmoviceMapper" >
+  <resultMap id="BaseResultMap" type="com.taotao.pojo.Doubanmovice" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="director" property="director" jdbcType="VARCHAR" />
+    <result column="playwright" property="playwright" jdbcType="VARCHAR" />
+    <result column="actor" property="actor" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="putdate" property="putdate" jdbcType="TIMESTAMP" />
+    <result column="runtime" property="runtime" jdbcType="TIME" />
+    <result column="rating" property="rating" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, title, director, playwright, actor, category, putdate, runtime, rating
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.taotao.pojo.DoubanmoviceExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from doubanmovice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from doubanmovice
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from doubanmovice
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.taotao.pojo.DoubanmoviceExample" >
+    delete from doubanmovice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.taotao.pojo.Doubanmovice" >
+    insert into doubanmovice (id, title, director, 
+      playwright, actor, category, 
+      putdate, runtime, rating
+      )
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{director,jdbcType=VARCHAR}, 
+      #{playwright,jdbcType=VARCHAR}, #{actor,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, 
+      #{putdate,jdbcType=TIMESTAMP}, #{runtime,jdbcType=TIME}, #{rating,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.taotao.pojo.Doubanmovice" >
+    insert into doubanmovice
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="director != null" >
+        director,
+      </if>
+      <if test="playwright != null" >
+        playwright,
+      </if>
+      <if test="actor != null" >
+        actor,
+      </if>
+      <if test="category != null" >
+        category,
+      </if>
+      <if test="putdate != null" >
+        putdate,
+      </if>
+      <if test="runtime != null" >
+        runtime,
+      </if>
+      <if test="rating != null" >
+        rating,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="director != null" >
+        #{director,jdbcType=VARCHAR},
+      </if>
+      <if test="playwright != null" >
+        #{playwright,jdbcType=VARCHAR},
+      </if>
+      <if test="actor != null" >
+        #{actor,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null" >
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="putdate != null" >
+        #{putdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="runtime != null" >
+        #{runtime,jdbcType=TIME},
+      </if>
+      <if test="rating != null" >
+        #{rating,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.taotao.pojo.DoubanmoviceExample" resultType="java.lang.Integer" >
+    select count(*) from doubanmovice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update doubanmovice
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.director != null" >
+        director = #{record.director,jdbcType=VARCHAR},
+      </if>
+      <if test="record.playwright != null" >
+        playwright = #{record.playwright,jdbcType=VARCHAR},
+      </if>
+      <if test="record.actor != null" >
+        actor = #{record.actor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.category != null" >
+        category = #{record.category,jdbcType=VARCHAR},
+      </if>
+      <if test="record.putdate != null" >
+        putdate = #{record.putdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.runtime != null" >
+        runtime = #{record.runtime,jdbcType=TIME},
+      </if>
+      <if test="record.rating != null" >
+        rating = #{record.rating,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update doubanmovice
+    set id = #{record.id,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=VARCHAR},
+      director = #{record.director,jdbcType=VARCHAR},
+      playwright = #{record.playwright,jdbcType=VARCHAR},
+      actor = #{record.actor,jdbcType=VARCHAR},
+      category = #{record.category,jdbcType=VARCHAR},
+      putdate = #{record.putdate,jdbcType=TIMESTAMP},
+      runtime = #{record.runtime,jdbcType=TIME},
+      rating = #{record.rating,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.taotao.pojo.Doubanmovice" >
+    update doubanmovice
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="director != null" >
+        director = #{director,jdbcType=VARCHAR},
+      </if>
+      <if test="playwright != null" >
+        playwright = #{playwright,jdbcType=VARCHAR},
+      </if>
+      <if test="actor != null" >
+        actor = #{actor,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null" >
+        category = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="putdate != null" >
+        putdate = #{putdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="runtime != null" >
+        runtime = #{runtime,jdbcType=TIME},
+      </if>
+      <if test="rating != null" >
+        rating = #{rating,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.taotao.pojo.Doubanmovice" >
+    update doubanmovice
+    set title = #{title,jdbcType=VARCHAR},
+      director = #{director,jdbcType=VARCHAR},
+      playwright = #{playwright,jdbcType=VARCHAR},
+      actor = #{actor,jdbcType=VARCHAR},
+      category = #{category,jdbcType=VARCHAR},
+      putdate = #{putdate,jdbcType=TIMESTAMP},
+      runtime = #{runtime,jdbcType=TIME},
+      rating = #{rating,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

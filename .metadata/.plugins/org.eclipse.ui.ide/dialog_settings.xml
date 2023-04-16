@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ExternalProjectImportWizard">
+		<item key="WizardProjectsImportPage.STORE_NESTED_PROJECTS" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID" value="true"/>
+		<item key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED" value="false"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\zcq\Desktop\新建文件夹\JavaEE\课堂练习"/>
+			<item value="C:\Users\zcq\Desktop\JavaEE\课堂练习\chapter02"/>
+			<item value="C:\Users\zcq\Desktop\JavaEE\课堂练习\chapter01"/>
+			<item value="C:\Users\zcq\Desktop\bookstore-6.14\bookstore"/>
+			<item value="C:\Users\zcq\Desktop\my tool\WEB综合案例\bookstore-6.13\bookstore"/>
+			<item value="C:\Users\zcq\Desktop\EStore-master"/>
+			<item value="C:\Users\zcq\Desktop\资料+源码+笔记\bookEstore"/>
+			<item value="C:\Users\zcq\Desktop\ch04_filter01"/>
+			<item value="C:\Users\zcq\Desktop\ch04"/>
+			<item value="C:\Users\zcq\Desktop\regeisted"/>
+			<item value="C:\Users\zcq\Desktop\login"/>
+			<item value="C:\Users\zcq\Desktop\ch3"/>
+			<item value="C:\Users\zcq\Desktop\ch03"/>
+			<item value="C:\Users\zcq\Desktop\Desktop\login"/>
+			<item value="C:\Users\zcq\Desktop\bookstore"/>
+			<item value="C:\Users\zcq\Desktop\JavaWeb\作业\user_login"/>
+			<item value="C:\Users\zcq\Desktop\JavaWeb\作业\ch02"/>
+			<item value="C:\Users\zcq\Desktop\JavaWeb\作业\ch01"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+	</section>
+</section>

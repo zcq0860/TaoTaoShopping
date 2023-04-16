@@ -1,0 +1,3 @@
+2020-05-26 13:17:14,196 [main] [com.taotao.rest.jedis.JedisTest]-[DEBUG] 调用redisCluster开始
+2020-05-26 13:17:14,201 [main] [com.taotao.rest.jedis.JedisTest]-[INFO] 创建一个JedisCluster对象
+2020-05-26 13:17:26,426 [main] [com.taotao.rest.jedis.JedisTest]-[DEBUG] 设置key1的值为1000

@@ -1,0 +1,12 @@
+package com.taotao.service;
+
+import com.taotao.common.pojo.EUDataGridResult;
+import com.taotao.pojo.TbItem;
+import com.taotao.pojo.TbItemParam;
+
+public interface ItemParamService {
+	
+	TbItemParam getItemParamById(long itemParamId);
+	//展示分类规格列表
+	EUDataGridResult getItemParamList(int page, int rows);
+}

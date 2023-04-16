@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 2 elements from project &apos;generatorSqlmapCustom&apos;&#x0D;&#x0A;- Original project: &apos;generatorSqlmapCustom&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     generatorSqlmapCustom/src/com.taotao.mapper&#x0D;&#x0A;     generatorSqlmapCustom/src/com.taotao.pojo" description="Delete elements" element1="/src&lt;com.taotao.pojo" element2="/src&lt;com.taotao" element3="/src&lt;com" element4="/src&lt;com.taotao.mapper" elements="4" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1587373359725" subPackages="false" version="1.0"/>
+</session>
