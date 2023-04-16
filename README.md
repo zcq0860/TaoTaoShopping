@@ -1,4 +1,4 @@
-# TaoTaoShopping 分布式商城
+# TaoTaoShopping 分布式商城（项目总结：https://zhuanlan.zhihu.com/p/622388986）
 ## 项目整体架构
 ![image](https://user-images.githubusercontent.com/48476278/232313875-fcd78171-5593-4342-aba9-6ffe7a889f82.png)
 
