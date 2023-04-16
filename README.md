@@ -1,4 +1,10 @@
 # TaoTaoShopping 分布式商城
+## 项目整体架构
+![image](https://user-images.githubusercontent.com/48476278/232313875-fcd78171-5593-4342-aba9-6ffe7a889f82.png)
+
+## 系统流程图
+![image](https://user-images.githubusercontent.com/48476278/232313980-0d83e164-292c-4fcf-9277-bc1be8bc06a4.png)
+
 ## 前端界面
 ### 用户注册
 ![用户注册](https://user-images.githubusercontent.com/48476278/232313647-b491e349-d447-4377-a8e8-ee37a9ca9602.png)
